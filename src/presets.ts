@@ -1,0 +1,53 @@
+import type { Workout } from './types';
+
+export const PRESETS: Workout[] = [
+  {
+    id: 'preset-tabata',
+    name: 'Tabata (8 × 20s/10s)',
+    sets: 1,
+    repsPerSet: 8,
+    work: { kind: 'timed', seconds: 20 },
+    restBetweenRepsSec: 10,
+    restBetweenSetsSec: 0,
+  },
+  {
+    id: 'preset-emom-10',
+    name: 'EMOM 10 (10 × 60s)',
+    sets: 1,
+    repsPerSet: 10,
+    work: { kind: 'timed', seconds: 60 },
+    restBetweenRepsSec: 0,
+    restBetweenSetsSec: 0,
+  },
+  {
+    id: 'preset-5x400',
+    name: '5 × 400m (90s rest)',
+    sets: 1,
+    repsPerSet: 5,
+    work: { kind: 'manual' },
+    restBetweenRepsSec: 90,
+    restBetweenSetsSec: 0,
+    warmupSec: 5 * 60,
+    cooldownSec: 5 * 60,
+  },
+  {
+    id: 'preset-3x5x400',
+    name: '3 × (5 × 400m) — 90s rep / 3min set',
+    sets: 3,
+    repsPerSet: 5,
+    work: { kind: 'manual' },
+    restBetweenRepsSec: 90,
+    restBetweenSetsSec: 3 * 60,
+    warmupSec: 10 * 60,
+    cooldownSec: 5 * 60,
+  },
+  {
+    id: 'preset-simple',
+    name: 'Simple interval (6 × 60s/60s)',
+    sets: 1,
+    repsPerSet: 6,
+    work: { kind: 'timed', seconds: 60 },
+    restBetweenRepsSec: 60,
+    restBetweenSetsSec: 0,
+  },
+];
