@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { downloadFit } from '../garmin/fitWorkout';
 import { PRESETS } from '../presets';
 import { deleteWorkout, loadWorkouts } from '../storage';
 import type { Workout } from '../types';
@@ -46,13 +47,23 @@ export default function Home({ onRun, onBuild, onEdit }: Props) {
                 <div className="workout-card__name">{w.name}</div>
                 <div className="workout-card__detail">{summarize(w)}</div>
               </div>
-              <button
-                type="button"
-                className="btn btn--primary"
-                onClick={() => onRun(w)}
-              >
-                Start
-              </button>
+              <div className="workout-card__actions">
+                <button
+                  type="button"
+                  className="btn btn--small"
+                  onClick={() => downloadFit(w)}
+                  title="Download a Garmin .FIT file you can import into Garmin Connect"
+                >
+                  Export to Garmin
+                </button>
+                <button
+                  type="button"
+                  className="btn btn--primary"
+                  onClick={() => onRun(w)}
+                >
+                  Start
+                </button>
+              </div>
             </li>
           ))}
         </ul>
@@ -89,6 +100,14 @@ export default function Home({ onRun, onBuild, onEdit }: Props) {
                     onClick={() => handleDelete(w.id)}
                   >
                     Delete
+                  </button>
+                  <button
+                    type="button"
+                    className="btn btn--small"
+                    onClick={() => downloadFit(w)}
+                    title="Download a Garmin .FIT file you can import into Garmin Connect"
+                  >
+                    Export to Garmin
                   </button>
                   <button
                     type="button"
